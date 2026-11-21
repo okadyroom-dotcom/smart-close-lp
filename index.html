@@ -53,20 +53,22 @@
   a{color:inherit;}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
   h1,h2,h3,h4{font-family:'Zen Maru Gothic',sans-serif;margin:0;color:var(--navy);font-weight:700;}
+  h2{line-height:1.45;}
   .eyebrow{
     display:inline-flex;align-items:center;gap:8px;
     font-family:'Zen Maru Gothic',sans-serif;font-weight:700;
-    font-size:13px;letter-spacing:.06em;color:var(--orange-deep);
+    font-size:16px;letter-spacing:.06em;color:var(--orange-deep);
     background:var(--orange-softer);border:1px solid var(--orange-soft);
-    padding:7px 16px;border-radius:999px;
+    padding:8px 26px;border-radius:999px;
   }
   .section{position:relative;padding:96px 0;}
   #trust,#flow,#faq,#voice,#contact{padding-top:48px;}
   .section--tight{padding:72px 0;}
   .section--white{background:var(--white);}
   .section--soft{background:linear-gradient(180deg,var(--cream) 0%,var(--orange-softer) 100%);}
+  .section--soft .eyebrow{background:#fff;border-color:#fff;box-shadow:0 2px 8px rgba(38,56,74,0.04);}
   .center{text-align:center;}
-  .lede{max-width:680px;margin:18px auto 0;color:var(--body);font-size:16px;}
+  .lede{max-width:640px;margin:28px auto 0;color:var(--body);font-size:16.5px;}
 
   /* ---------- top ribbon (replaces header) ---------- */
   .top-ribbon{
@@ -87,7 +89,7 @@
   .btn:hover{transform:translateY(-2px);}
   .btn--primary{background:var(--orange);color:#fff;box-shadow:0 10px 24px rgba(28,143,209,0.32);}
   .btn--primary:hover{background:var(--orange-deep);}
-  .btn--ghost{background:#fff;color:var(--orange);border:2.5px solid var(--orange);}
+  .btn--ghost{background:#fff;color:var(--orange);border:2.5px solid var(--orange);box-shadow:0 8px 20px rgba(28,143,209,0.18);}
   .btn--ghost:hover{background:var(--orange);color:#fff;}
   .btn--ghostw{border:2px solid rgba(255,255,255,0.75);color:#fff;background:transparent;}
   .btn--ghostw:hover{background:rgba(0,0,0,0.15);}
@@ -110,27 +112,83 @@
   .back-to-top:hover{background:var(--orange-deep);}
 
   /* ---------- hero ---------- */
-  .hero{padding:56px 0 40px;position:relative;overflow:hidden;}
+  .hero{padding:0 0 8px;position:relative;overflow:hidden;}
+  .hero-bg{
+    position:relative;
+    background:url(images/bg-hero-pattern.png) center top/cover no-repeat;
+  }
   .hero-grid{
     position:relative;z-index:1;
-    display:flex;gap:48px;align-items:stretch;
+    display:grid;grid-template-columns:1fr 1fr;column-gap:0;
+    grid-template-areas:"copy visual" "logo visual" "cta visual";
+    grid-template-rows:auto auto 1fr;
+    align-items:start;
   }
-  .hero-text{flex:1.15 1 0;min-width:0;text-align:center;}
-  .hero-logo{width:380px;max-width:100%;margin:0 auto 26px;display:block;}
+  .hero-copy{grid-area:copy;text-align:center;padding-top:62px;}
   .hero h1{
-    font-size:clamp(28px,4vw,42px);font-weight:900;line-height:1.5;margin:18px 0 16px;
+    font-size:40px;font-weight:900;line-height:1.55;margin:0 0 18px;letter-spacing:0;white-space:nowrap;
   }
   .hero h1 .hi{color:var(--orange);}
-  .hero-lead{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:16.5px;color:var(--navy);margin:0 0 16px;}
-  .hero-sub{font-size:16px;color:var(--body);margin-bottom:0;text-align:left;}
-  .hero-visual{
-    flex:0.85 1 0;min-width:0;position:relative;
-    display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:24px;
+  .hero-lead{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:18px;color:var(--navy);line-height:1.7;margin:0;}
+  .hero-logo-wrap{grid-area:logo;text-align:center;margin-top:22px;}
+  .hero-logo{width:440px;max-width:100%;margin:0 auto;display:block;}
+  .hero-cta{grid-area:cta;text-align:center;margin-top:32px;}
+  .hero-cta .btn{width:384px;max-width:100%;font-size:18px;padding:16px 32px;}
+  .hero-visual{grid-area:visual;position:relative;min-height:578px;}
+  .hero-woman{
+    position:absolute;left:-60px;top:-40px;width:600px;max-width:none;
+    height:618px;object-fit:cover;object-position:top center;
   }
-  .hero-visual img{width:78%;margin:0 auto;filter:drop-shadow(0 18px 24px rgba(38,56,74,0.16));}
-  .hero-btn-row{display:flex;flex-direction:column;gap:14px;width:100%;}
-  .hero-btn-row .btn{width:100%;text-align:center;}
-  .btn--ghost-orange{color:var(--orange);}
+  .hero-chara{position:absolute;right:40px;bottom:2px;width:250px;text-align:center;}
+  .hero-chara-caption{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;color:var(--navy);margin-top:6px;line-height:1.4;text-align:left;padding-left:20px;}
+  .hero-chara-caption small{display:block;font-size:15px;}
+  .hero-chara-caption b{display:block;font-size:20px;letter-spacing:.06em;margin-top:6px;}
+  .hero-bubble{
+    position:absolute;left:-120px;top:110px;width:124px;height:124px;border-radius:50%;
+    background:var(--blue-trust);color:#fff;font-family:'Zen Maru Gothic',sans-serif;font-weight:700;
+    font-size:15px;line-height:1.45;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;text-align:left;z-index:2;
+    animation:bubbleFloat 3.2s ease-in-out infinite;
+  }
+  @keyframes bubbleFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+  .hero-bubble::after{
+    content:"";position:absolute;right:-12px;top:50%;margin-top:-8px;
+    border-left:16px solid var(--blue-trust);border-top:8px solid transparent;border-bottom:8px solid transparent;
+  }
+  .hero-lead-box{
+    position:relative;z-index:1;background:rgba(255,255,255,0.9);border-radius:6px;
+    padding:12px 12px;margin-top:0;font-size:15.5px;line-height:1.6;color:var(--body);
+  }
+
+  /* ----- character flip (rotate into depth, 6 frames x 1.5s, endless) ----- */
+  .chara-flip{position:relative;width:250px;aspect-ratio:1000/969;perspective:900px;}
+  .chara-flip img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+    backface-visibility:hidden;transform-origin:50% 50%;
+    opacity:0;animation:charaFlip 9s linear infinite;
+    filter:drop-shadow(0 12px 16px rgba(38,56,74,0.16));
+  }
+  .chara-flip img:nth-child(1){animation-delay:0s;}
+  .chara-flip img:nth-child(2){animation-delay:1.5s;}
+  .chara-flip img:nth-child(3){animation-delay:3s;}
+  .chara-flip img:nth-child(4){animation-delay:4.5s;}
+  .chara-flip img:nth-child(5){animation-delay:6s;}
+  .chara-flip img:nth-child(6){animation-delay:7.5s;}
+  @keyframes charaFlip{
+    0%      {opacity:1;transform:rotateY(-90deg);}
+    1.667%  {opacity:1;transform:rotateY(0deg);}
+    15%     {opacity:1;transform:rotateY(0deg);}
+    16.666% {opacity:1;transform:rotateY(90deg);}
+    16.667% {opacity:0;transform:rotateY(90deg);}
+    100%    {opacity:0;transform:rotateY(90deg);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .chara-flip img{animation:none;}
+    .chara-flip img:first-child{opacity:1;transform:none;}
+    .hero-bubble{animation:none;}
+  }
 
   /* video card */
   .video-card{
@@ -140,21 +198,23 @@
   .video-card-head{display:flex;align-items:center;justify-content:center;text-align:center;gap:14px;margin-bottom:20px;}
   .video-thumb{
     border-radius:var(--radius-md);overflow:hidden;position:relative;background:var(--navy-soft);
-    aspect-ratio:16/8.2;display:flex;align-items:center;justify-content:center;
-    width:100%;max-width:700px;margin:0 auto;
+    aspect-ratio:16/9;width:100%;max-width:700px;margin:0 auto;
   }
+  .video-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+  .video-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:23px;color:var(--navy);line-height:1.5;}
+  .video-subtitle{font-size:14px;color:var(--muted);margin-top:8px;}
   .video-thumb svg{position:relative;z-index:2;}
   .video-thumb-caption{
     position:absolute;bottom:16px;left:16px;background:rgba(38,56,74,0.85);color:#fff;
     font-size:12.5px;padding:6px 14px;border-radius:999px;font-family:'Zen Maru Gothic',sans-serif;
   }
   .video-note{
-    max-width:700px;margin:18px auto 0;font-size:12px;line-height:1.5;color:var(--muted);
+    max-width:700px;margin:18px auto 0;font-size:13px;line-height:1.5;color:var(--muted);
     display:flex;flex-direction:column;gap:3px;
   }
 
   /* ---------- problem cards ---------- */
-  .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px;}
+  .case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:44px;}
   .case-card{
     background:#fff;border-radius:var(--radius-md);padding:26px 24px 0;box-shadow:var(--shadow-card);
     position:relative;display:flex;flex-direction:column;
@@ -164,21 +224,21 @@
     font-family:'Poppins',sans-serif;font-weight:700;color:var(--orange);
     font-size:38px;line-height:1;margin-bottom:6px;text-align:center;
   }
-  .case-card h4{font-size:18.5px;margin-bottom:6px;line-height:1.5;text-align:center;}
+  .case-card h4{font-size:20px;margin-bottom:6px;line-height:1.5;text-align:center;}
   .case-loss{
-    font-size:13.5px;color:var(--muted);margin-bottom:0;
+    font-size:14.5px;color:var(--muted);margin-bottom:0;text-align:center;white-space:nowrap;letter-spacing:-.01em;
   }
-  .case-loss b{color:var(--alert);font-size:16px;}
+  .case-loss b{color:var(--alert);font-size:18px;font-family:'Zen Maru Gothic',sans-serif;}
   .case-illustration-wrap{margin-top:auto;padding-top:10px;}
   .speech{
-    background:var(--navy-soft);border-radius:14px;padding:14px 16px;font-size:13.5px;
+    background:var(--navy-soft);border-radius:14px;padding:16px 16px;font-size:15px;
     color:var(--body-2);position:relative;margin-bottom:16px;
   }
   .speech::after{
     content:"";position:absolute;left:50%;bottom:-7px;width:15px;height:15px;background:var(--navy-soft);
     transform:translateX(-50%) rotate(45deg);
   }
-  .speech .who{display:block;font-weight:700;color:var(--navy);margin-top:8px;font-size:12px;}
+  .speech .who{display:block;font-weight:700;color:var(--navy);margin-top:8px;font-size:13px;}
   .case-illustration{width:82%;max-width:230px;margin:0 auto;display:block;}
 
   /* stat banner */
@@ -190,15 +250,15 @@
   .stat-banner-imgcell{position:relative;min-height:280px;}
   .stat-banner-imgcell img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
   .stat-banner-text{padding:44px;}
-  .stat-banner .txt .desc{font-family:'Zen Maru Gothic',sans-serif;font-size:22px;color:#fff;font-weight:700;margin-bottom:16px;line-height:1.6;}
+  .stat-banner .txt .desc{font-family:'Zen Maru Gothic',sans-serif;font-size:22px;color:#fff;font-weight:700;margin-bottom:16px;line-height:1.6;max-width:400px;}
   .stat-num{font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:56px;color:var(--yellow);line-height:1.1;}
   .stat-num span{font-size:22px;margin-left:6px;color:var(--yellow);}
-  .stat-src{font-size:11px;color:#8ea0ac;margin-top:12px;}
+  .stat-src{font-size:12px;color:#9fb0bc;margin-top:12px;}
 
   /* ---------- solution ---------- */
   .solution-hero{text-align:center;margin-top:44px;}
   .solution-hero img{width:280px;max-width:60%;margin:0 auto;filter:drop-shadow(0 16px 20px rgba(38,56,74,0.14));}
-  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
+  .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:44px;}
   .feature-item{
     display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
     background:#fff;border-radius:var(--radius-md);padding:36px 26px;
@@ -210,8 +270,8 @@
   }
   .feature-icon svg{width:42px;height:42px;}
   .feature-icon img{width:100%;height:100%;object-fit:cover;}
-  .feature-item h4{font-size:21px;margin-bottom:4px;min-height:2.6em;display:flex;align-items:center;justify-content:center;line-height:1.25;}
-  .feature-item p{margin:0;font-size:14.5px;color:var(--body);}
+  .feature-item h4{font-size:21px;line-height:1.4;margin-bottom:4px;min-height:2.6em;display:flex;align-items:center;justify-content:center;line-height:1.25;}
+  .feature-item p{margin:0;font-size:15px;color:var(--body);}
   .feature-item .num{font-size:22px;font-weight:700;color:var(--orange);letter-spacing:.02em;font-family:'Poppins',sans-serif;}
 
   /* ---------- trust (light blue) ---------- */
@@ -228,14 +288,14 @@
     padding:0;box-shadow:none;
   }
   .trust-panel h3{font-size:26px;color:#fff;margin-bottom:14px;}
-  .trust-panel p{font-size:14.5px;color:#fff;margin:0 0 24px;max-width:760px;}
+  .trust-panel p{font-size:15px;color:#fff;margin:0 0 24px;max-width:760px;}
   .trust-facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.35);}
   .trust-facts li{
-    font-size:14px;color:#fff;display:flex;gap:16px;padding:14px 0;
+    font-size:15px;color:#fff;display:flex;gap:16px;padding:14px 0;
     border-bottom:1px solid rgba(255,255,255,0.35);
   }
   .trust-facts li:last-child{padding-bottom:7px;}
-  .trust-facts li b{color:#fff;min-width:96px;flex-shrink:0;font-weight:700;font-family:'Zen Maru Gothic',sans-serif;font-size:13px;}
+  .trust-facts li b{color:#fff;min-width:96px;flex-shrink:0;font-weight:700;font-family:'Zen Maru Gothic',sans-serif;font-size:14px;}
 
   /* ---------- how to use ---------- */
   .flow-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:52px;align-items:stretch;}
@@ -245,15 +305,14 @@
   }
   .flow-card:nth-child(3){grid-column:1 / -1;width:100%;}
   .flow-tag{
-    align-self:center;width:100%;text-align:center;font-size:16px;font-weight:700;font-family:'Zen Maru Gothic',sans-serif;
+    align-self:center;width:100%;text-align:center;font-size:17px;font-weight:700;font-family:'Zen Maru Gothic',sans-serif;
     color:var(--orange);background:none;padding:0 0 10px;border-bottom:2px solid var(--orange);letter-spacing:.02em;
     min-height:2.9em;display:flex;align-items:center;justify-content:center;line-height:1.35;
   }
   .flow-card h4{font-size:16px;line-height:1.5;}
   .flow-logo{height:64px;width:auto;object-fit:contain;margin:12px auto 16px;}
-  .flow-card p{font-size:13.3px;color:var(--body);margin:0;min-height:3.6em;}
-  .flow-card .btn{width:220px;max-width:100%;margin:0 auto;font-size:14px;padding:13px 18px;flex-shrink:0;}
-  .flow-card .btn--primary{box-shadow:none;}
+  .flow-card p{font-size:15.5px;color:var(--body);margin:0;}
+  .flow-card .btn{width:220px;max-width:100%;margin:0 auto;font-size:16.5px;padding:15px 18px;flex-shrink:0;}
   .flow-spacer{flex:1;}
   .flow-card .flow-btn-center{margin-top:auto;margin-bottom:auto;}
   .btn-stack .btn{margin:0;}
@@ -263,7 +322,7 @@
   .faq-item{background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(38,56,74,0.13);overflow:hidden;}
   .faq-q{
     display:flex;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;
-    font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:14.5px;color:var(--navy);
+    font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:16px;line-height:1.45;color:var(--navy);
   }
   .faq-q::-webkit-details-marker{display:none;}
   .faq-q .qmark{
@@ -272,32 +331,38 @@
   }
   .faq-q .chev{margin-left:auto;transition:transform .2s ease;color:#B9AF9F;flex-shrink:0;}
   details[open] .chev{transform:rotate(180deg);}
-  .faq-a{padding:0 24px 22px 70px;font-size:13.8px;color:var(--body);}
+  .faq-a{padding:0 24px 22px 70px;font-size:15px;color:var(--body);}
+  .faq-a p{margin:0;}
+  .faq-a p + p{margin-top:12px;}
+  .faq-a a{color:inherit;text-decoration:none;}
 
   /* ---------- voices ---------- */
-  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+  .voice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:52px;}
   .voice-card{background:#fff;border-radius:var(--radius-md);padding:26px 24px;box-shadow:var(--shadow-card);}
+  .voice-grid{grid-template-rows:auto auto 1fr;}
+  .voice-card{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;align-content:start;}
+  .voice-top{align-self:center;}
   .voice-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
   .voice-avatar{
     width:44px;height:44px;border-radius:50%;background:var(--orange-softer);
     display:flex;align-items:center;justify-content:center;flex-shrink:0;
   }
-  .voice-top b{font-size:14px;color:var(--navy);display:block;}
-  .voice-top span{font-size:11.5px;color:var(--muted);}
+  .voice-top b{font-size:17px;color:var(--navy);display:block;}
+  .voice-top span{font-size:13px;line-height:1.4;display:block;color:var(--muted);}
   .voice-result{
     background:var(--navy-soft);border-radius:12px;padding:12px 14px;margin:14px 0;
-    font-size:13px;display:flex;justify-content:space-between;align-items:center;
+    font-size:15px;display:flex;justify-content:space-between;align-items:center;
   }
-  .voice-result b{color:var(--green);font-size:17px;font-family:'Zen Maru Gothic',sans-serif;}
-  .voice-card p{font-size:13.3px;color:var(--body);margin:0;}
+  .voice-result b{color:var(--green);font-size:21px;font-family:'Zen Maru Gothic',sans-serif;}
+  .voice-card p{font-size:15px;line-height:1.55;color:var(--body);margin:0;}
 
   /* ---------- notice ---------- */
   .notice-box{
     margin-top:20px;background:#fff;border:2px solid var(--alert);border-radius:var(--radius-md);
     padding:15px 32px 30px;
   }
-  .notice-box h4{font-size:20px;display:flex;align-items:center;gap:10px;margin-bottom:16px;color:var(--alert);}
-  .notice-box ul{margin:0;padding-left:20px;font-size:13.3px;color:var(--body);display:flex;flex-direction:column;gap:5px;line-height:1.55;}
+  .notice-box h4{font-size:21px;display:flex;align-items:center;gap:10px;margin-bottom:16px;color:var(--alert);}
+  .notice-box ul{margin:0;padding-left:20px;font-size:14.5px;color:var(--body);display:flex;flex-direction:column;gap:5px;line-height:1.55;}
   .hl-yellow{background:#FFE067;padding:1px 5px;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
 
   .dispute-block{margin-top:22px;padding-top:20px;border-top:1px dashed #F3C9BC;text-align:center;}
@@ -311,32 +376,33 @@
     background:transparent;border-radius:0;box-shadow:none;
   }
   .dispute-card .dicon img{width:100%;height:100%;object-fit:contain;}
-  .dispute-card span{font-size:12.8px;color:var(--body-2);font-weight:500;line-height:1;display:block;}
+  .dispute-card span{font-size:14px;color:var(--body-2);font-weight:500;line-height:1;display:block;}
 
   .notice-lines{margin-top:18px;display:flex;flex-direction:column;gap:5px;}
-  .notice-lines div{font-size:12.5px;color:var(--muted);line-height:1.5;}
+  .notice-lines div{font-size:13px;color:var(--muted);line-height:1.5;}
 
   /* ---------- contact ---------- */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px;}
   .contact-card{
-    background:#fff;border-radius:var(--radius-md);padding:26px 26px;box-shadow:var(--shadow-card);
-    border:2px solid var(--blue-contact);text-align:center;display:flex;flex-direction:column;align-items:center;
+    background:#fff;border-radius:var(--radius-md);padding:26px 26px 28px;box-shadow:var(--shadow-card);
+    border:2px solid var(--orange);text-align:center;display:flex;flex-direction:column;align-items:center;
   }
   .contact-card.svc{border-color:var(--orange);}
-  .contact-card .ctag{font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--blue-contact);font-family:'Zen Maru Gothic',sans-serif;}
+  .contact-mail{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:15px;color:var(--navy);text-decoration:none;margin-top:6px;letter-spacing:.04em;}
+  .contact-card .ctag{font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--orange-deep);font-family:'Zen Maru Gothic',sans-serif;}
   .contact-card.svc .ctag{color:var(--orange-deep);}
-  .contact-card h4{font-size:18px;font-weight:900;margin:6px 0 12px;}
+  .contact-card h4{font-size:20px;font-weight:900;margin:8px 0 12px;}
   .contact-inline-group{display:inline-flex;flex-direction:column;align-items:center;margin:0 auto;}
   .freedial-badge{
     display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--blue-contact);
     border:1.5px solid var(--blue-contact);
-    font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;margin-bottom:6px;
+    font-size:14px;font-weight:700;padding:9px 14px;border-radius:6px;margin-bottom:8px;letter-spacing:.06em;
     font-family:'Zen Maru Gothic',sans-serif;
   }
   .contact-card.svc .freedial-badge{background:transparent;color:var(--orange-deep);border-color:var(--orange);}
   .contact-line{display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;margin-bottom:0;}
-  .contact-line b{font-family:'Zen Maru Gothic',sans-serif;font-size:34px;color:var(--navy);letter-spacing:.01em;}
-  .contact-meta{font-size:16px;color:var(--muted);margin-top:10px;line-height:1.65;}
+  .contact-line b{font-family:'Zen Maru Gothic',sans-serif;font-size:36px;color:var(--navy);letter-spacing:.01em;}
+  .contact-meta{font-size:16px;color:var(--muted);margin-top:6px;line-height:1.6;}
 
   /* ---------- final cta ---------- */
   .final-cta{
@@ -348,23 +414,29 @@
   .final-cta .btn--primary{background:#fff;color:var(--orange-deep);box-shadow:0 10px 24px rgba(0,0,0,0.15);}
   .final-cta .btn--primary:hover{background:#E3EEF6;}
 
-  footer{background:var(--navy);color:#9FB0BC;padding:36px 0;font-size:12.5px;}
-  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .site-footer{background:#002656;color:#fff;font-size:14px;line-height:1.3;}
+  .footer-main{max-width:1440px;margin:0 auto;padding:16px 48px 28px;display:flex;flex-direction:column;gap:23px;}
+  .footer-links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;row-gap:16px;}
+  .footer-links li{padding:0 24px;border-right:1px solid #9BABC0;line-height:1;}
+  .footer-links li:last-child{border-right:none;}
+  .footer-links a{color:#fff;text-decoration:none;font-size:14px;}
+  .footer-links a:hover{text-decoration:underline;}
+  .footer-copyarea{border-top:1px solid #9BABC0;padding-top:28px;display:grid;grid-template-columns:193px 1fr;grid-template-areas:"logo message" "logo copy";column-gap:16px;row-gap:16px;align-items:start;}
+  .footer-logo{grid-area:logo;display:flex;align-items:center;height:100%;}
+  .footer-logo img,.footer-message img{display:block;max-width:100%;height:auto;}
+  .footer-message{grid-area:message;justify-self:end;}
+  .footer-copy{grid-area:copy;justify-self:end;margin:0;}
+  .footer-copy small{font-size:14px;color:#fff;}
 
   .section-head{max-width:640px;margin:0 auto;text-align:center;}
   .mobile-only{display:none;}
+  .pc-only{display:inline;}
 
   /* ---------- scroll reveal ---------- */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
   .reveal.is-visible{opacity:1;transform:translateY(0);}
 
   @media (max-width:860px){
-    .hero{padding:36px 0 24px;}
-    .hero-grid{flex-direction:column;}
-    .hero-logo{width:260px;}
-    .hero-visual{max-width:260px;margin:0 auto;}
-    .hero-btn-row{max-width:280px;margin:20px auto 0;}
-    .video-card{padding:20px;margin-top:32px;}
     .section{padding:48px 0;}
     .section--tight{padding:36px 0;}
     .case-grid,.voice-grid{grid-template-columns:1fr;gap:18px;}
@@ -385,10 +457,82 @@
     .contact-grid{grid-template-columns:1fr;gap:18px;margin-top:28px;}
     .contact-card{padding:24px 22px;}
     .contact-meta{font-size:13px;}
-    .dispute-grid{grid-template-columns:1fr;}
+    .dispute-grid{gap:8px;}
+    .dispute-card .dicon{width:120px;height:108px;}
+    .dispute-card span{font-size:12.5px;line-height:1.4;}
     .notice-box{padding:22px 20px;}
     .final-cta{padding:40px 26px;}
     .mobile-only{display:inline;}
+    .pc-only{display:none;}
+    .wrap{padding:0 20px;}
+
+    /* hero (SP) */
+    .hero{padding-bottom:40px;}
+    .hero-bg{background-size:auto 100%;}
+    .hero-grid{grid-template-columns:1fr;grid-template-areas:"copy" "logo" "visual" "cta";grid-template-rows:auto;}
+    .hero-copy{padding-top:32px;}
+    .hero h1{font-size:26px;line-height:1.55;margin-bottom:12px;letter-spacing:0;white-space:normal;}
+    .hero-lead{font-size:14.5px;}
+    .hero-logo-wrap{margin-top:16px;}
+    .hero-logo{width:250px;}
+    .hero-visual{min-height:0;height:330px;margin-top:12px;}
+    .hero-woman{left:-14px;width:310px;height:330px;}
+    .hero-chara{right:-8px;bottom:78px;width:140px;}
+    .chara-flip{width:140px;}
+    .hero-bubble{left:-62px;top:-4px;width:78px;height:78px;font-size:10.5px;letter-spacing:.02em;}
+    .hero-bubble::after{right:-9px;border-left-width:12px;}
+    .hero-chara-caption{padding-left:4px;margin-top:2px;background:rgba(255,255,255,0.85);border-radius:6px;padding:4px 6px;}
+    .hero-chara-caption small{font-size:10.5px;}
+    .hero-chara-caption b{font-size:14px;margin-top:2px;}
+    .hero-cta{margin-top:-70px;position:relative;z-index:3;}
+    .hero-cta .btn{width:100%;font-size:16px;padding:16px 24px;}
+    .hero-lead-box{margin-top:20px;font-size:14px;padding:14px 14px;}
+
+    /* video (SP) */
+    .video-title{font-size:18px;}
+    .back-to-top{width:44px;height:44px;right:14px;bottom:14px;}
+    .video-subtitle{font-size:12.5px;margin-top:4px;}
+    .video-card{padding:16px;margin-top:32px;}
+    .video-card-head{margin-bottom:14px;}
+    .video-note{font-size:12px;}
+
+    /* typography (SP) */
+    .eyebrow{font-size:14px;padding:7px 18px;}
+    .lede{font-size:15px;margin-top:20px;text-align:left;}
+    .case-card h4{font-size:19px;}
+    .case-top-block{min-height:0;margin-bottom:14px;}
+    .case-loss{font-size:14px;}
+    .speech{font-size:14.5px;}
+    .case-illustration{width:62%;}
+    .stat-banner .txt .desc{font-size:18px;}
+    .stat-num{font-size:46px;}
+    .stat-num span{font-size:18px;}
+    .feature-item h4{font-size:19px;min-height:0;}
+    .feature-item p{font-size:14.5px;}
+    .trust-panel h3{font-size:20px;line-height:1.45;}
+    .trust-panel p{font-size:14.5px;}
+    .trust-facts li{font-size:14px;flex-direction:column;gap:2px;}
+    .flow-tag{font-size:15.5px;min-height:0;}
+    .flow-logo{height:60px;margin:6px auto 8px;}
+    .flow-card p{font-size:14.5px;text-align:left;}
+    .flow-card .btn{width:100%;font-size:15.5px;}
+    .faq-q{font-size:15px;padding:16px 16px;gap:12px;align-items:flex-start;}
+    .faq-q .qmark{width:28px;height:28px;}
+    .faq-a{padding:0 16px 18px 56px;font-size:14.5px;}
+    .footer-main{padding:24px 24px 84px;gap:24px;}
+    .footer-links{justify-content:flex-start;flex-direction:column;row-gap:14px;}
+    .footer-links li{padding:0;border-right:none;line-height:1.5;}
+    .footer-copyarea{grid-template-columns:1fr;grid-template-areas:"message" "logo" "copy";padding-top:32px;row-gap:20px;}
+    .footer-message,.footer-copy{justify-self:start;}
+    .footer-copy small{font-size:12px;}
+    .voice-top b{font-size:16px;}
+    .voice-card p{font-size:14.5px;}
+    .voice-grid{grid-template-rows:none;}
+    .voice-card{display:block;grid-row:auto;}
+    .notice-box h4{font-size:18px;}
+    .notice-box ul{font-size:13.5px;}
+    .contact-line b{font-size:31px;}
+    .contact-card h4{font-size:18px;}
   }
 </style>
 </head>
@@ -401,21 +545,36 @@
 <!-- ================= HERO ================= -->
 <a id="top"></a>
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-text">
-      <img class="hero-logo" src="images/logo-smartclose.svg" alt="すま～とクローズ">
-      <h1>突然の<span class="hi">ドタキャン損害</span>に、<br>もう泣き寝入りしない。</h1>
-      <p class="hero-lead">損害保険の日新火災がおススメする、<br>あんしんのサービスです。</p>
-      <p class="hero-sub">
-        キャンセルで発生した損害を、法務大臣許可の集金専門会社があなたに代わって集金します。しかも着手金0円の完全成功報酬型だから安心して依頼可能。東京海上グループの日新火災がおススメするあんしんのサービスです。（サービス名称　すま～とクローズ）
-      </p>
-    </div>
-    <div class="hero-visual">
-      <img class="reveal" src="images/squirrel-hero.png" alt="すま～とクローズの案内キャラクター「おまもりす」" style="margin-top:30px;">
-      <div class="btn-row hero-btn-row">
-        <a href="#contact" class="btn btn--primary">お見積もり・お申し込み</a>
-        <a href="#flow" class="btn btn--ghost">ご利用方法を見る</a>
+  <div class="hero-bg">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>突然の<span class="hi">ドタキャン損害</span>に、<br>もう泣き寝入りしない。</h1>
+        <p class="hero-lead">「事業をおまもりする保険」加入者向け<br>キャンセル料集金代行サービス</p>
       </div>
+      <div class="hero-logo-wrap">
+        <img class="hero-logo" src="images/logo-smartclose-hero.png" alt="すま～とクローズ">
+      </div>
+      <div class="hero-cta">
+        <a href="#flow" class="btn btn--primary">ご利用方法を見る</a>
+      </div>
+      <div class="hero-visual">
+        <img class="hero-woman" src="images/hero-woman.png" alt="笑顔で接客する飲食店スタッフ">
+        <div class="hero-chara">
+          <div class="hero-bubble">いろんな<br>事業を<br>おまもり<br>します！</div>
+          <div class="chara-flip" role="img" aria-label="事業をおまもりする保険 商品公式キャラクター「おまもりす」">
+            <img src="images/omamorisu_01.png" alt="">
+            <img src="images/omamorisu_05.png" alt="">
+            <img src="images/omamorisu_06.png" alt="">
+            <img src="images/omamorisu_07.png" alt="">
+            <img src="images/omamorisu_08.png" alt="">
+            <img src="images/omamorisu_09.png" alt="">
+          </div>
+          <div class="hero-chara-caption"><small>事業をおまもりする保険<br>商品公式キャラクター</small><b>「おまもりす」</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="hero-lead-box">キャンセル料を、法務大臣許可の集金専門会社があなたに代わって集金します。しかも着手金0円の完全成功報酬型だから安心して依頼可能。東京海上グループの日新火災がおススメするあんしんのサービスです。（サービス名称　すま～とクローズ）</p>
     </div>
   </div>
 
@@ -423,20 +582,13 @@
     <div class="video-card">
       <div class="video-card-head">
         <div>
-          <div style="font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:15px;color:var(--navy);">動画でカンタン解説！「すま～とクローズ」</div>
-          <div style="font-size:12.5px;color:var(--muted);">3分でわかる、キャンセル料集金の流れ</div>
+          <div class="video-title">動画でカンタン解説！<br class="mobile-only">「すま～とクローズ」</div>
+          <div class="video-subtitle">3分でわかる、キャンセル料集金の流れ</div>
         </div>
       </div>
+      <!-- 仮動画：日新火災 商品公式チャンネル。本番動画のIDに差し替えてください -->
       <div class="video-thumb">
-        <svg width="120%" height="120%" viewBox="0 0 400 190" style="position:absolute;top:0;left:0;opacity:.5;">
-          <path d="M0,150 Q100,110 200,140 T400,120" stroke="#DCE6EA" stroke-width="2" fill="none"/>
-          <path d="M0,170 Q100,150 200,165 T400,150" stroke="#DCE6EA" stroke-width="2" fill="none"/>
-        </svg>
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="32" r="32" fill="var(--orange)"/>
-          <path d="M26 21v22l19-11-19-11Z" fill="#fff"/>
-        </svg>
-        <div class="video-thumb-caption">再生時間 03:12</div>
+        <iframe src="https://www.youtube-nocookie.com/embed/BtSTHsJUVU4?rel=0" title="すま～とクローズ 解説動画" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
     <div class="video-note">
@@ -450,8 +602,8 @@
 <!-- ================= PROBLEM ================= -->
 <section class="section section--soft" id="problem">
   <div class="wrap">
-    <div class="section-head">
-      <h2 style="font-size:clamp(24px,3.4vw,32px);text-align:center;">あなたのまわりで、<br class="mobile-only">こんなケースが発生しています</h2>
+    <div class="section-head" style="max-width:none;">
+      <h2 style="font-size:clamp(22px,3.4vw,34px);text-align:center;line-height:1.6;">こんな経験ありませんか？<br>予約キャンセルが<br class="mobile-only">思わぬ損失につながることも。</h2>
     </div>
 
     <div class="case-grid">
@@ -469,7 +621,7 @@
       <div class="case-card">
         <div class="case-top-block">
           <div class="case-num">02</div>
-          <h4>ネイルサロンの<br>予約キャンセル</h4>
+          <h4>ネイルサロン・<br>美容室の予約キャンセル</h4>
           <p class="case-loss">スタッフの給料分で <b>〇〇万円</b> の損害</p>
         </div>
         <div class="case-illustration-wrap">
@@ -496,7 +648,7 @@
       </div>
       <div class="txt stat-banner-text">
         <div class="desc">飲食業界における無断キャンセル（ノーショー）の被害額はなんと</div>
-        <div class="stat-num">2,000<span>億円規模／年</span></div>
+        <div class="stat-num">2,000億円<span>規模／年</span></div>
         <div class="stat-src">出典：No show対策レポート（経済産業省「サービス産業の高付加価値化に向けた外部環境整備等に関する有識者勉強会」）</div>
       </div>
     </div>
@@ -508,7 +660,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">すま～とクローズなら</span>
-      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,30px);">これからは、スマホひとつで<br>集金を依頼できます</h2>
+      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,32px);">これからは、スマホひとつで<br>集金を依頼できます</h2>
     </div>
 
     <div class="solution-hero">
@@ -521,7 +673,7 @@
           <img src="images/icon-point1.png" alt="催促不要">
         </div>
         <span class="num">POINT❶</span>
-        <h4>お店からの催促は<br>一切不要</h4>
+        <h4>ご自分での催促は<br>一切不要</h4>
         <p>専用ページから予約情報を入力するだけ。面倒な集金業務は、すべてプロが代行します。</p>
       </div>
       <div class="feature-item">
@@ -537,7 +689,7 @@
           <img src="images/icon-point3.png" alt="安定経営に貢献">
         </div>
         <span class="num">POINT❸</span>
-        <h4>回収漏れを防ぎ、<br>安定経営へ</h4>
+        <h4>集金漏れを防ぎ、<br>安定経営へ</h4>
         <p>これまで泣き寝入りしていたキャンセル損害を確実に回収することで、事業者さまの収益を守り、健全な経営基盤づくりを支援します。</p>
       </div>
     </div>
@@ -549,7 +701,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">安心してお任せください</span>
-      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,30px);">集金業務は、法務大臣の許可を<br>受けた会社が代行します</h2>
+      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,32px);">集金業務は、法務大臣の許可を<br>受けた会社が代行します</h2>
     </div>
 
     <img class="trust-banner-img" src="images/photo-business.jpg" alt="安心の取引をイメージしたビジネスシーン">
@@ -569,9 +721,9 @@
 <!-- ================= HOW TO USE ================= -->
 <section class="section section--soft" id="flow">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" style="max-width:none;">
       <span class="eyebrow">ご利用方法</span>
-      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,30px);">すま～とクローズは、以下2つの保険に自動セットされる付帯サービスです</h2>
+      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,32px);">すま～とクローズは、以下2つの保険に自動<br class="pc-only">セットされる付帯サービスです</h2>
       <p class="lede">サービス対象店舗は、下記保険のご契約者さま・被保険者さまが運営・管理する飲食業、理容・美容業、宿泊業の店舗です。ご加入いただくと、サービス自体のご利用は<b>着手金無料の完全成功報酬型</b>でご利用いただけます。<br><a href="#notice" style="color:var(--orange-deep);text-decoration:underline;white-space:nowrap;">＊サービスのご提供ができない例</a></p>
     </div>
 
@@ -580,18 +732,13 @@
         <span class="flow-tag">WEBでのお申し込みをご希望の方</span>
         <img class="flow-logo" src="images/logo-jigyo.jpg" alt="事業をおまもりする保険">
         <p>年間売上高1億円以下の事業者様限定。事業活動に関わる賠償リスクを補償する保険で、Webから簡単にお申し込みいただけます。</p>
-        <a href="https://direct.nisshinfire.co.jp/busisup/" class="btn btn--primary flow-btn-center" style="width:auto;min-width:220px;padding-left:26px;padding-right:26px;white-space:nowrap;">お見積もり・お申し込みはこちら</a>
+        <a href="https://direct.nisshinfire.co.jp/busisup/" class="btn btn--primary flow-btn-center">お見積り・お申込み</a>
       </div>
       <div class="flow-card">
         <span class="flow-tag">対面でのお見積もり／お申し込みをご希望の方</span>
         <img class="flow-logo" src="images/logo-bijisapo.png" alt="ビジサポ 統合賠償責任保険">
         <p>すべての事業者様が対象。お客さまの事業活動に関わるさまざまな賠償リスクをまとめて補償する保険です。</p>
-        <div class="flow-spacer"></div>
-        <div class="btn-stack">
-          <a href="https://www.nisshinfire.co.jp/service/list.html#busisup" class="btn btn--primary btn--sm">パンフレットはこちら</a>
-          <a href="https://www.nisshinfire.co.jp/agency/agency.php" class="btn btn--primary btn--sm">代理店のご案内はこちら</a>
-          <a href="https://www.nisshinfire.co.jp/company/shop.html" class="btn btn--primary btn--sm">営業店のご案内はこちら</a>
-        </div>
+        <a href="#contact" class="btn btn--primary flow-btn-center">お問い合せはこちら</a>
       </div>
       <div class="flow-card">
         <span class="flow-tag">すでに上記保険にご加入済みの方</span>
@@ -608,29 +755,59 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Q&amp;A</span>
-      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,30px);">よくあるご質問</h2>
+      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,32px);">よくあるご質問</h2>
     </div>
 
     <div class="faq-list">
       <details class="faq-item" open>
-        <summary class="faq-q"><span class="qmark">Q</span>サービスの利用にあたり何か登録が必要ですか？　債権回収会社と何か契約を交わすのでしょうか？<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">債権回収会社と書面での契約取り交わしは不要ですが、サービス利用にあたり、専用ページでの会員登録が必要となります。</div>
+        <summary class="faq-q"><span class="qmark">Q</span><span>証券に同封されているチラシを紛失してしまいました。再発行はできますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-a">
+<p>再発行可能です。ご契約の保険の種類に応じて、以下へお問い合わせください。</p>
+<p>・ビジサポをご契約のお客さま<br>
+取扱代理店へお問い合わせください。</p>
+<p>・事業をおまもりする保険をご契約のお客さま<br>
+次のサポートデスクへご連絡ください。<br>
+事業をおまもりする保険 サポートデスク<br>
+<a href="tel:0120302789">0120-302-789</a><br>
+平日9:00~18:00 / 土日祝9:00~17:00<br>
+（年末年始を除く）</p>
+        </div>
       </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qmark">Q</span>キャンセルポリシーを作成していないのですが、サービスを利用できるのでしょうか？<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">キャンセルポリシーを作成していない場合、サービスの利用はできません。※作成されていない場合は、雛形を準備しておりますので、参考にご使用ください。</div>
+      <details class="faq-item" open>
+        <summary class="faq-q"><span class="qmark">Q</span><span>集金を依頼するキャンセル料に、上限額はありますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-a">
+<p>集金を依頼いただけるキャンセル料の金額は、お客さまが定めるキャンセルポリシーに基づく請求額が上限となります。<br>
+なお、1件につきお取り扱い可能なキャンセル料の上限額は30万円です。</p>
+        </div>
       </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qmark">Q</span>サービスの利用回数に制限はありますか？<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">利用回数の制限はありません。</div>
+      <details class="faq-item" open>
+        <summary class="faq-q"><span class="qmark">Q</span><span>キャンセルポリシーを作成していない場合でも、サービスを利用できますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-a">
+<p>キャンセルポリシーを作成していない場合は、このサービスをご利用いただけません。<br>
+なお、キャンセルポリシーを作成されていない場合は、雛形をご用意しております。<br>
+ご契約の保険の種類に応じて、以下へお問い合わせください。</p>
+<p>・ビジサポをご契約のお客さま<br>
+取扱代理店へお問い合わせください。</p>
+<p>・事業をおまもりする保険をご契約のお客さま<br>
+次のサポートデスクへご連絡ください。<br>
+事業をおまもりする保険 サポートデスク<br>
+<a href="tel:0120302789">0120-302-789</a><br>
+平日9:00~18:00 / 土日祝9:00~17:00<br>
+（年末年始を除く）</p>
+        </div>
       </details>
-      <details class="faq-item">
-        <summary class="faq-q"><span class="qmark">Q</span>集金依頼するキャンセル料に限度額はありますか？<svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">キャンセルポリシーに基づいた請求が上限となります。また、1件でお取り扱い可能なキャンセル料の上限額は<b style="text-decoration:underline;">30万円</b>となります。</div>
+      <details class="faq-item" open>
+        <summary class="faq-q"><span class="qmark">Q</span><span>サービスを利用するために、債権回収会社との契約や事前の登録は必要ですか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-a">
+<p>債権回収会社との書面による契約手続きは不要です。ただし、このサービスをご利用いただくためには、事前に専用ページでの会員登録が必要となります。</p>
+        </div>
       </details>
-    </div>
-    <div class="center" style="margin-top:28px;">
-      <a href="https://faq.nisshinfire.co.jp/?site_domain=customer" class="btn btn--ghost btn--sm">その他のよくあるご質問はこちら</a>
+      <details class="faq-item" open>
+        <summary class="faq-q"><span class="qmark">Q</span><span>サービスの利用可能回数に制限はありますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-a">
+<p>このサービスの利用可能回数に、制限はありません。</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -640,9 +817,9 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">導入事例</span>
-      <span class="eyebrow" style="background:#FDEAE6;color:var(--alert);border-color:#F9C8BC;margin-left:8px;">※仮設定イメージ(ダミー)</span>
-      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,30px);">実際にサービスを<br>利用された方の声（テキストダミー）</h2>
-      <p class="lede">※仮設定イメージ(テキストはダミー)です。公開時には、実際にご利用いただいた事例に順次更新予定です。</p>
+      <span class="eyebrow" style="background:#FDEAE6;color:var(--alert);border-color:#F9C8BC;margin-left:2px;">※仮設定イメージ(ダミー)</span>
+      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,32px);">実際にサービスを<br>利用された方の声<br class="mobile-only">（テキストダミー）</h2>
+      <p class="lede">※仮設定イメージ(テキストはダミー)です。<br>公開時には、実際にご利用いただいた事例に順次更新予定です。</p>
     </div>
 
     <div class="voice-grid">
@@ -746,7 +923,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">お問い合わせ</span>
-      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,30px);">ご不明な点はお気軽に<br>お問い合わせください</h2>
+      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,32px);">ご不明な点はお気軽に<br>お問い合わせください</h2>
     </div>
 
     <div class="contact-grid">
@@ -763,7 +940,7 @@
           </div>
         </div>
         <div class="contact-meta">日新火災テレフォンサービスセンター<br>平日 9:00〜18:00／土日祝 9:00〜17:00</div>
-        <a href="https://www.nisshinfire.co.jp/contact" class="btn btn--primary btn--sm" style="margin-top:16px;">お問い合わせ</a>
+        <a href="https://www.nisshinfire.co.jp/contact" class="btn btn--primary" style="margin-top:14px;padding:13px 36px;">お問い合わせ</a>
       </div>
       <div class="contact-card svc">
         <span class="ctag">サービスについて</span>
@@ -777,7 +954,7 @@
           <div class="contact-line">
             <b>045-264-3301</b>
           </div>
-          <img src="images/icon-email.png" alt="info@a-co.co.jp" style="height:20px;width:auto;margin-top:4px;display:block;">
+          <a class="contact-mail" href="mailto:info@a-co.co.jp">info@a-co.co.jp</a>
         </div>
         <div class="contact-meta">平日 9:00〜17:00<br>神奈川県横浜市中区吉田町72番地</div>
       </div>
@@ -785,10 +962,19 @@
   </div>
 </section>
 
-<footer>
-  <div class="wrap footer-inner">
-    <div>© 日新火災海上保険株式会社／栄光債権回収株式会社</div>
-    <div>すま～とクローズ｜キャンセル料の集金代行サービス</div>
+<footer class="site-footer">
+  <div class="footer-main">
+    <ul class="footer-links">
+      <li><a href="https://www.nisshinfire.co.jp/company/sitemap.html" target="_blank" rel="noopener">サイトマップ</a></li>
+      <li><a href="https://www.nisshinfire.co.jp/company/site-policy.html" target="_blank" rel="noopener">当サイトのご利用にあたって</a></li>
+      <li><a href="https://www.nisshinfire.co.jp/company/policy.html" target="_blank" rel="noopener">勧誘方針</a></li>
+      <li><a href="https://www.nisshinfire.co.jp/company/privacy.html" target="_blank" rel="noopener">プライバシーポリシー（個人情報のお取扱いについて）</a></li>
+    </ul>
+    <div class="footer-copyarea">
+      <div class="footer-logo"><img src="images/img-footer-logo.svg" alt="東京海上グループ" width="193" height="25" loading="lazy"></div>
+      <div class="footer-message"><a href="https://www.tokiomarinehd.com/company/philosophy/" target="_blank" rel="noopener"><img src="images/img-footer-message.svg" alt="次の一歩の力になる。" width="201" height="21" loading="lazy"></a></div>
+      <p class="footer-copy"><small>© Nisshin Fire &amp; Marine Insurance Co.,Ltd. All Rights Reserved.</small></p>
+    </div>
   </div>
 </footer>
 
