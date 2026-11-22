@@ -200,6 +200,18 @@
     border-radius:var(--radius-md);overflow:hidden;position:relative;background:var(--navy-soft);
     aspect-ratio:16/9;width:100%;max-width:700px;margin:0 auto;
   }
+  .video-thumb--placeholder{aspect-ratio:auto;}
+  .video-thumb--placeholder img{display:block;width:100%;height:auto;}
+  .video-play{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;
+    background:rgba(28,143,209,0.92);box-shadow:0 8px 24px rgba(28,143,209,0.35);
+    display:flex;align-items:center;justify-content:center;padding-left:5px;box-sizing:border-box;
+  }
+  .video-dummy-badge{
+    position:absolute;top:14px;left:50%;transform:translateX(-50%);white-space:nowrap;
+    background:#FDEAE6;color:var(--alert);border:1px solid #F9C8BC;border-radius:999px;
+    font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:14px;padding:6px 20px;letter-spacing:.04em;
+  }
   .video-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
   .video-title{font-family:'Zen Maru Gothic',sans-serif;font-weight:700;font-size:23px;color:var(--navy);line-height:1.5;}
   .video-subtitle{font-size:14px;color:var(--muted);margin-top:8px;}
@@ -253,6 +265,7 @@
   .stat-banner .txt .desc{font-family:'Zen Maru Gothic',sans-serif;font-size:22px;color:#fff;font-weight:700;margin-bottom:16px;line-height:1.6;max-width:400px;}
   .stat-num{font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:56px;color:var(--yellow);line-height:1.1;}
   .stat-num span{font-size:22px;margin-left:6px;color:var(--yellow);}
+  .stat-num .stat-unit{font-size:.8em;margin-left:2px;}
   .stat-src{font-size:12px;color:#9fb0bc;margin-top:12px;}
 
   /* ---------- solution ---------- */
@@ -276,7 +289,7 @@
 
   /* ---------- trust (light blue) ---------- */
   .section--trustblue{background:var(--blue-trust);}
-  .section--trustblue .eyebrow{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .section--trustblue .eyebrow{background:#fff;color:var(--orange-deep);border-color:#fff;}
   .section--trustblue h2{color:#fff;line-height:1.35;}
   .section--trustblue .lede{color:#fff;}
   .trust-banner-img{
@@ -314,7 +327,9 @@
   .flow-card p{font-size:15.5px;color:var(--body);margin:0;}
   .flow-card .btn{width:220px;max-width:100%;margin:0 auto;font-size:16.5px;padding:15px 18px;flex-shrink:0;}
   .flow-spacer{flex:1;}
-  .flow-card .flow-btn-center{margin-top:auto;margin-bottom:auto;}
+  .flow-card .flow-btn-center{margin-top:auto;margin-bottom:0;}
+  .flow-card p + .flow-btn-center{margin-top:auto;}
+  .flow-card p{margin-bottom:10px !important;}
   .btn-stack .btn{margin:0;}
 
   /* ---------- FAQ ---------- */
@@ -331,7 +346,12 @@
   }
   .faq-q .chev{margin-left:auto;transition:transform .2s ease;color:#B9AF9F;flex-shrink:0;}
   details[open] .chev{transform:rotate(180deg);}
-  .faq-a{padding:0 24px 22px 70px;font-size:15px;color:var(--body);}
+  .faq-a{padding:0 24px 22px 70px;font-size:15px;color:var(--body);position:relative;}
+  .faq-a .amark{
+    position:absolute;left:24px;top:-3px;width:30px;height:30px;border-radius:9px;
+    background:#fff;border:2px solid var(--orange);color:var(--orange);box-sizing:border-box;
+    display:flex;align-items:center;justify-content:center;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;font-size:14px;
+  }
   .faq-a p{margin:0;}
   .faq-a p + p{margin-top:12px;}
   .faq-a a{color:inherit;text-decoration:none;}
@@ -495,6 +515,9 @@
     .video-card{padding:16px;margin-top:32px;}
     .video-card-head{margin-bottom:14px;}
     .video-note{font-size:12px;}
+    .video-play{width:56px;height:56px;padding-left:3px;}
+    .video-play svg{width:24px;height:24px;}
+    .video-dummy-badge{top:8px;font-size:11.5px;padding:4px 14px;}
 
     /* typography (SP) */
     .eyebrow{font-size:14px;padding:7px 18px;}
@@ -507,6 +530,7 @@
     .stat-banner .txt .desc{font-size:18px;}
     .stat-num{font-size:46px;}
     .stat-num span{font-size:18px;}
+    .stat-num .stat-unit{font-size:.8em;}
     .feature-item h4{font-size:19px;min-height:0;}
     .feature-item p{font-size:14.5px;}
     .trust-panel h3{font-size:20px;line-height:1.45;}
@@ -519,6 +543,7 @@
     .faq-q{font-size:15px;padding:16px 16px;gap:12px;align-items:flex-start;}
     .faq-q .qmark{width:28px;height:28px;}
     .faq-a{padding:0 16px 18px 56px;font-size:14.5px;}
+    .faq-a .amark{left:16px;width:28px;height:28px;}
     .footer-main{padding:24px 24px 84px;gap:24px;}
     .footer-links{justify-content:flex-start;flex-direction:column;row-gap:14px;}
     .footer-links li{padding:0;border-right:none;line-height:1.5;}
@@ -586,9 +611,11 @@
           <div class="video-subtitle">3分でわかる、キャンセル料集金の流れ</div>
         </div>
       </div>
-      <!-- 仮動画：日新火災 商品公式チャンネル。本番動画のIDに差し替えてください -->
-      <div class="video-thumb">
-        <iframe src="https://www.youtube-nocookie.com/embed/BtSTHsJUVU4?rel=0" title="すま～とクローズ 解説動画" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <!-- 仮置き：動画サムネイル＋ダミー表記。本番動画が届いたらYouTube埋め込みに差し替え -->
+      <div class="video-thumb video-thumb--placeholder">
+        <img src="images/movie-thumbnail.png" alt="すま～とクローズ解説動画のサムネイル（仮）" width="875" height="536">
+        <span class="video-play" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="#fff"/></svg></span>
+        <span class="video-dummy-badge">※仮設定イメージ(ダミー)</span>
       </div>
     </div>
     <div class="video-note">
@@ -648,7 +675,7 @@
       </div>
       <div class="txt stat-banner-text">
         <div class="desc">飲食業界における無断キャンセル（ノーショー）の被害額はなんと</div>
-        <div class="stat-num">2,000億円<span>規模／年</span></div>
+        <div class="stat-num">2,000<span class="stat-unit">億円</span><span>規模／年</span></div>
         <div class="stat-src">出典：No show対策レポート（経済産業省「サービス産業の高付加価値化に向けた外部環境整備等に関する有識者勉強会」）</div>
       </div>
     </div>
@@ -660,7 +687,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">すま～とクローズなら</span>
-      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,32px);">これからは、スマホひとつで<br>集金を依頼できます</h2>
+      <h2 style="margin-top:16px;font-size:clamp(22px,3vw,32px);">これからは、スマホひとつで<br>集金できる時代！</h2>
     </div>
 
     <div class="solution-hero">
@@ -682,7 +709,7 @@
         </div>
         <span class="num">POINT❷</span>
         <h4>安心の完全成功<br>報酬型</h4>
-        <p>キャンセル料が実際に回収できた場合のみ手数料（集金額の20%＋消費税）が発生。初期費用・月額費用は不要です。</p>
+        <p>キャンセル料が実際に集金できた場合のみ手数料（集金額の20%＋消費税）が発生。初期費用・月額費用は不要です。</p>
       </div>
       <div class="feature-item">
         <div class="feature-icon">
@@ -690,7 +717,7 @@
         </div>
         <span class="num">POINT❸</span>
         <h4>集金漏れを防ぎ、<br>安定経営へ</h4>
-        <p>これまで泣き寝入りしていたキャンセル損害を確実に回収することで、事業者さまの収益を守り、健全な経営基盤づくりを支援します。</p>
+        <p>これまで泣き寝入りしていたキャンセル損害を確実に集金することで、事業者さまの収益を守り、健全な経営基盤づくりを支援します。</p>
       </div>
     </div>
   </div>
@@ -731,14 +758,14 @@
       <div class="flow-card">
         <span class="flow-tag">WEBでのお申し込みをご希望の方</span>
         <img class="flow-logo" src="images/logo-jigyo.jpg" alt="事業をおまもりする保険">
-        <p>年間売上高1億円以下の事業者様限定。事業活動に関わる賠償リスクを補償する保険で、Webから簡単にお申し込みいただけます。</p>
+        <p>年間売上高1億円以下の事業者さま限定。事業活動に関わる賠償リスクを補償する保険で、Webから簡単にお申し込みいただけます。</p>
         <a href="https://direct.nisshinfire.co.jp/busisup/" class="btn btn--primary flow-btn-center">お見積り・お申込み</a>
       </div>
       <div class="flow-card">
         <span class="flow-tag">対面でのお見積もり／お申し込みをご希望の方</span>
         <img class="flow-logo" src="images/logo-bijisapo.png" alt="ビジサポ 統合賠償責任保険">
-        <p>すべての事業者様が対象。お客さまの事業活動に関わるさまざまな賠償リスクをまとめて補償する保険です。</p>
-        <a href="#contact" class="btn btn--primary flow-btn-center">お問い合せはこちら</a>
+        <p>すべての事業者さまが対象。お客さまの事業活動に関わるさまざまな賠償リスクをまとめて補償する保険です。</p>
+        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=6CaX2MvHH0iTN2_R-J6kmvUxEyWQYChOtQk4UnGjEVVURFhDQ0pJQUlJNkYyODdWT0VXOEtVUktNNC4u" target="_blank" rel="noopener" class="btn btn--primary flow-btn-center">お問い合せはこちら</a>
       </div>
       <div class="flow-card">
         <span class="flow-tag">すでに上記保険にご加入済みの方</span>
@@ -761,7 +788,7 @@
     <div class="faq-list">
       <details class="faq-item" open>
         <summary class="faq-q"><span class="qmark">Q</span><span>証券に同封されているチラシを紛失してしまいました。再発行はできますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">
+        <div class="faq-a"><span class="amark" aria-hidden="true">A</span>
 <p>再発行可能です。ご契約の保険の種類に応じて、以下へお問い合わせください。</p>
 <p>・ビジサポをご契約のお客さま<br>
 取扱代理店へお問い合わせください。</p>
@@ -775,14 +802,14 @@
       </details>
       <details class="faq-item" open>
         <summary class="faq-q"><span class="qmark">Q</span><span>集金を依頼するキャンセル料に、上限額はありますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">
+        <div class="faq-a"><span class="amark" aria-hidden="true">A</span>
 <p>集金を依頼いただけるキャンセル料の金額は、お客さまが定めるキャンセルポリシーに基づく請求額が上限となります。<br>
 なお、1件につきお取り扱い可能なキャンセル料の上限額は30万円です。</p>
         </div>
       </details>
       <details class="faq-item" open>
         <summary class="faq-q"><span class="qmark">Q</span><span>キャンセルポリシーを作成していない場合でも、サービスを利用できますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">
+        <div class="faq-a"><span class="amark" aria-hidden="true">A</span>
 <p>キャンセルポリシーを作成していない場合は、このサービスをご利用いただけません。<br>
 なお、キャンセルポリシーを作成されていない場合は、雛形をご用意しております。<br>
 ご契約の保険の種類に応じて、以下へお問い合わせください。</p>
@@ -797,15 +824,15 @@
         </div>
       </details>
       <details class="faq-item" open>
-        <summary class="faq-q"><span class="qmark">Q</span><span>サービスを利用するために、債権回収会社との契約や事前の登録は必要ですか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">
-<p>債権回収会社との書面による契約手続きは不要です。ただし、このサービスをご利用いただくためには、事前に専用ページでの会員登録が必要となります。</p>
+        <summary class="faq-q"><span class="qmark">Q</span><span>サービスの利用可能回数に制限はありますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-a"><span class="amark" aria-hidden="true">A</span>
+<p>このサービスの利用可能回数に、制限はありません。</p>
         </div>
       </details>
       <details class="faq-item" open>
-        <summary class="faq-q"><span class="qmark">Q</span><span>サービスの利用可能回数に制限はありますか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="faq-a">
-<p>このサービスの利用可能回数に、制限はありません。</p>
+        <summary class="faq-q"><span class="qmark">Q</span><span>サービスを利用するために、債権回収会社との契約や事前の登録は必要ですか。</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="faq-a"><span class="amark" aria-hidden="true">A</span>
+<p>債権回収会社との書面による契約手続きは不要です。ただし、このサービスをご利用いただくためには、事前に専用ページでの会員登録が必要となります。</p>
         </div>
       </details>
     </div>
